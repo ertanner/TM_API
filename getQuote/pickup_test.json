@@ -1,0 +1,51 @@
+{
+  "dyltPickupReqs": {
+    "dyltPickupReq": {
+      "accountNumber": "11582391",
+      "userName": "BNoble",
+      "password": "Noble1",
+      "shipmentID": "88311019490",
+      "billTerms": "Collect",
+      "serviceType": "LTL",
+      "shipperName": "Wow Wee c/o Kenko Freight Sys.",
+      "shipperAddress1": "13438 FOSTER RD",
+      "shipperCity": "SANTA FE SPRINGS",
+      "shipperState": "CA",
+      "shipperZip": "90670",
+      "shipperContactName": "Christine Wong",
+      "shipperContactNumber": "562-663-8888",
+      "consigneeName": "Barnes & Noble",
+      "consigneeAddress1": "1 Barnes\\u0026Noble Way",
+      "consigneeAddress2": "STE A",
+      "consigneeCity": "Monroe",
+      "consigneeState": "NJ",
+      "consigneeZip": "08831",
+      "consigneeContactName": "Traffic Group",
+      "consigneeContactNumber": "732-656-7400",
+      "pickupStartDate": "2018-01-31",
+      "pickupStartTime": "09:00:00",
+      "pickupEndDate": "2018-01-31",
+      "pickupEndTime": "17:00:00",
+      "items": {
+        "item": {
+          "weight": "446",
+          "pcs": "85",
+          "description": "Freight Group ID: 1019490",
+          "actualClass": "150"
+        }
+      },
+      "shipReferences": {
+        "shipReference": {
+          "referenceType": "R",
+          "referenceNumber": "88311019490"
+        }
+      },
+      "accessorials": {
+        "accessorial": {
+          "accName": "D",
+          "accId": "Appointment Fee"
+        }
+      }
+    }
+  }
+}

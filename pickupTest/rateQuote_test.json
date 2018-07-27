@@ -1,0 +1,41 @@
+{
+  "dyltRateQuoteReq": {
+    "shipperInfo": {
+      "customerAddress": {
+        "city": "Williston",
+        "state": "VT",
+        "zip": "05495"
+      }
+    },
+    "consigneeInfo": {
+      "customerAddress": {
+        "city": "La Verne",
+        "state": "CA",
+        "zip": "91750"
+      }
+    },
+    "items": {
+      "item": [
+        {
+          "description": "Garage or Shop,  tool or parts storage, steel",
+          "nmfcNumber": "39340",
+          "pcs": "1",
+          "weight": "854",
+          "actualClass": "070"
+        },
+        {
+          "description": "Garage or Shop,  tool or parts storage, steel",
+          "nmfcNumber": "39340",
+          "pcs": "1",
+          "weight": "201",
+          "actualClass": "070"
+        }
+      ]
+    },
+    "accountNumber": "411093",
+    "userName": "ylarrea",
+    "password": "90502!!",
+    "billTerms": "Prepaid",
+    "serviceType": "LTL"
+  }
+}

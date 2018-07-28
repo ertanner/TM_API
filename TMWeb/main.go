@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -14,10 +15,29 @@ import (
 	"time"
 )
 
-func main() {
-	ch := make(chan string)
+var pool = flag.Int("pool", 1, "pool size")
+var rep = flag.Int("rep", 1, "number of repeats")
 
+func main() {
+	// -------------------------------------------------------
+	// parse the command line
+	// --------------------------------------------------------
+	flag.Parse()
+	fmt.Println("pool: " + strconv.Itoa(*pool))
+	fmt.Println("repeats: " + strconv.Itoa(*rep))
+	// --------------------------------------------------------
+
+	// --------------------------------------------------------
+	// make pool of chanels
+	// --------------------------------------------------------
+	ch := make(chan int, *pool)
+	results := make(chan int, *pool)
+	fmt.Println("hi")
+	// --------------------------------------------------------
+
+	// --------------------------------------------------------
 	//open and read a file of bill numbers
+	// --------------------------------------------------------
 	file, err := os.Open("./bills.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -29,14 +49,23 @@ func main() {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		bills = append(bills, scanner.Text())
-		fmt.Println(scanner.Text())
+		//fmt.Println(scanner.Text())
+	}
+	file.Close()
+	// --------------------------------------------------------
+
+	// --------------------------------------------------------
+	// start the pool of workers
+	// --------------------------------------------------------
+	for w := 1; w <= *pool; w++ {
+		go getTMWin(w, ch, results)
 	}
 
 	fmt.Println("Length: " + strconv.Itoa(len(bills)))
 	start := time.Now()
 	for i := 0; i < len(bills); i++ {
 		fmt.Println(i)
-		go getTMWin(i, bills[i], ch)
+		go getTMWin(i, ch, results)
 		time.Sleep(2000 * time.Millisecond)
 		fmt.Println(time.Since(start))
 	}
@@ -46,7 +75,7 @@ func main() {
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 
 }
-func getTMWin(count int, billNumber string, ch chan<- string) {
+func getTMWin(id int, ch chan<- int, results chan<- int) {
 	// Make HTTP GET request
 	response, err := http.Get("https://mydaylightupgrd.dylt.com/trace/external_bill_viewer.msw?trace_type=~PTLORDER&search_value=" + billNumber)
 	if err != nil {

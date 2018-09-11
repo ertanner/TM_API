@@ -22,9 +22,9 @@
       "consigneeZip": "08831",
       "consigneeContactName": "Traffic Group",
       "consigneeContactNumber": "732-656-7400",
-      "pickupStartDate": "2018-03-15",
+      "pickupStartDate": "2018-09-07",
       "pickupStartTime": "09:00:00",
-      "pickupEndDate": "2018-02-15",
+      "pickupEndDate": "2018-09-07",
       "pickupEndTime": "17:00:00",
       "items": {
         "item": {
